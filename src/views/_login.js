@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {colors} from '../views/css/colors';
 
 export const styles = StyleSheet.create({
   container: {
@@ -15,5 +16,8 @@ export const styles = StyleSheet.create({
   buttonContainer: {
     marginTop: '10%',
     width: '80%',
+  },
+  error: {
+    color: colors.danger,
   },
 });

@@ -11,4 +11,6 @@ export const styles = StyleSheet.create({
     width: '100%',
     padding: 10,
   },
+  animationContainer: {height: '80%', flexDirection: 'column', justifyContent: 'center', paddingTop: '50%'},
+  animation: {marginTop: 30},
 });

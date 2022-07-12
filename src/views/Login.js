@@ -13,7 +13,14 @@ import {GenericButton} from '../components/common/GenericButton';
 export function Login({onLoggedIn}) {
   const [userName, setUserName] = useState(null);
   const [password, setPassword] = useState(null);
-  console.log(userName, password);
+  const [error, setError] = useState(null);
+  function handleLogin() {
+    if (userName && password) {
+      onLoggedIn(userName);
+    } else {
+      setError('Please enter a username and a password');
+    }
+  }
   return (
     <View style={styles.container}>
       <Text style={styles.welcomeText}>Competing Ant App</Text>
@@ -28,8 +35,9 @@ export function Login({onLoggedIn}) {
         placeholder={'Enter a password'}
         secureTextEntry={true}
       />
+      <Text style={styles.error}>{error}</Text>
       <View style={styles.buttonContainer}>
-        <GenericButton title={'Log In'} onPress={() => onLoggedIn(userName)} />
+        <GenericButton title={'Log In'} onPress={handleLogin} />
       </View>
     </View>
   );
