@@ -2,7 +2,7 @@
  * @module AntAnimation
  * @description renders 3 ants with its index. They autoscroll horizontally
  */
-import React, {useCallback, useRef} from 'react';
+import React from 'react';
 import {View, Image, Text} from 'react-native';
 import {styles} from './_antAnimation';
 import Carousel from 'react-native-snap-carousel';
