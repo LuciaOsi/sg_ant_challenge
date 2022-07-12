@@ -1,6 +1,7 @@
 /**
  * @module GetAntsButton
- * @description button that take cares of getting the ant's data
+ * @description Renders a button that triggers the onPress funcion or a spinner.
+ * Used in the AntRace component to load the ants information
  */
 
 import React from 'react';

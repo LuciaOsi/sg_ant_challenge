@@ -59,7 +59,7 @@ const STATUS = {
 };
 
 function AntStatus({isStarted, isFinished, index, likelihood}) {
-  const antStatus = parseAntStatus(likelihood, isStarted);
+  const antStatus = getAntStatus(likelihood, isStarted);
   return (
     <View style={styles.antPositionContainer}>
       {isStarted && isFinished && (
@@ -104,7 +104,7 @@ const ANT_DETAILS = {
 };
 AntDetails.propTypes = ANT_DETAILS;
 
-function parseAntStatus(likelihood, isStarted) {
+function getAntStatus(likelihood, isStarted) {
   if (!isStarted) {
     return STATUS.NOT_STARTED;
   }

@@ -84,7 +84,6 @@ If you want to run the project in:
     .utils/
     .views/
         .css/
-            mixins.js
             colors.js
 
 ```

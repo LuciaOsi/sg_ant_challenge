@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
   },
   inputContainer: {
     alignItems: 'center',
-    backgroundColor: colors.secondary100BackgroundColor,
+    backgroundColor: colors.secondary10,
     borderRadius: 5,
     flexDirection: 'row',
     height: 48,

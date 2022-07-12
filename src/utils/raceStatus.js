@@ -1,7 +1,7 @@
 /**
- * @module isRaceFinished
- * @description method that calculates if the race is finished depending on the ants likelihood calculation
+ * @module raceIsFinished
+ * @return {boolean} return 'true' if the race is over, 'false' if there is an undefined likelihood
  */
-export function isRaceFinished(ants) {
+export function raceIsFinished(ants) {
   return ants.every(ant => ant.likelihood);
 }

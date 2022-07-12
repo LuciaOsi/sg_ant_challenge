@@ -1,6 +1,7 @@
 /**
  * @module RaceDashboard
- * @description view that will render the dashboard where we can start the race
+ * @description renders a button that starts the race and the list of ants.
+ * When the race finishes the ants are sort by likelihood
  */
 
 import React, {useState} from 'react';
@@ -49,11 +50,11 @@ export function RaceDashboard({ants = [], onRaceStart}) {
 RaceDashboard.propTypes = {
   ants: PropTypes.arrayOf(
     PropTypes.shape({
-      likelihood: PropTypes.number,
       name: PropTypes.string.isRequired,
       length: PropTypes.number.isRequired,
       color: PropTypes.string.isRequired,
       weight: PropTypes.number.isRequired,
+      likelihood: PropTypes.number,
     }),
   ).isRequired,
   onRaceStart: PropTypes.func.isRequired,
@@ -69,6 +70,6 @@ function getRaceStatusText(isStarted, isFinished) {
   }
 
   if (isStarted && isFinished) {
-    return 'Calculated!';
+    return 'Calculated';
   }
 }

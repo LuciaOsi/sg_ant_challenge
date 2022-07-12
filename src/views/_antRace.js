@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
     width: '100%',
   },
   error: {
-    color: colors.danger150Color,
+    color: colors.danger,
     textAlign: 'center',
     width: '100%',
     padding: 10,

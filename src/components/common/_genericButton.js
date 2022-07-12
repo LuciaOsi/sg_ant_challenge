@@ -2,7 +2,7 @@ import {StyleSheet} from 'react-native';
 import {colors} from '../../views/css/colors';
 export const styles = StyleSheet.create({
   buttonContainer: {
-    backgroundColor: colors.darkBackgroundColor,
+    backgroundColor: colors.dark,
     height: 48,
     borderRadius: 10,
   },
@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
     padding: 7,
   },
   buttonText: {
-    color: colors.lightColor,
+    color: colors.light,
     fontSize: 16,
   },
 });

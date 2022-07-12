@@ -1,6 +1,7 @@
 /**
  * @module AntRace
- * @description main module where the Ants Race will handle the views
+ * @description renders the GetAntsButton component if the ants information is not loaded,
+ * otherwise if renders the RaceDashboard component in order show the list of ants.
  */
 import React, {useState} from 'react';
 import {View, Alert} from 'react-native';
@@ -38,7 +39,6 @@ export function AntRace() {
 
   const startRace = () => {
     ants.forEach(ant => {
-      // callback to pass down to the likelihood calculator
       function getLikelihood(likelihood) {
         setAnts(oldAnts =>
           oldAnts
@@ -53,8 +53,6 @@ export function AntRace() {
             .sort((antA, antB) => antB.likelihood - antA.likelihood),
         );
       }
-
-      // this callback needs to be different for each ant, so it is calculated inside the foreach
       generateAntWinLikelihoodCalculator()(getLikelihood);
     });
   };

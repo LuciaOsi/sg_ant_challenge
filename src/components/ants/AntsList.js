@@ -8,10 +8,9 @@ import PropTypes from 'prop-types';
 import {View, FlatList} from 'react-native';
 import {Ant, ANT_PROPERTIES} from './Ant';
 import {styles} from './_antsList';
-import {isRaceFinished} from '../../utils/raceStatus.js';
-
+import {raceIsFinished} from '../../utils/raceStatus.js';
 export function AntsList({isStarted, ants, ...otherProps}) {
-  const isFinished = isRaceFinished(ants);
+  const isFinished = raceIsFinished(ants);
   return (
     <View style={styles.antsContainer}>
       <FlatList
@@ -19,6 +18,9 @@ export function AntsList({isStarted, ants, ...otherProps}) {
         extraData={ants}
         horizontal={false}
         data={ants}
+        showsHorizontalScrollIndicator={false}
+        keyExtractor={ant => ant.name}
+        ItemSeparatorComponent={() => <View style={styles.antSeparator} />}
         renderItem={({item, index}) => (
           <Ant
             {...item}
@@ -28,9 +30,6 @@ export function AntsList({isStarted, ants, ...otherProps}) {
             isFinished={isFinished}
           />
         )}
-        showsHorizontalScrollIndicator={false}
-        keyExtractor={ant => ant.name}
-        ItemSeparatorComponent={() => <View style={styles.antSeparator} />}
       />
     </View>
   );

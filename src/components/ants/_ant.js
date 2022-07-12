@@ -11,9 +11,9 @@ export const styles = StyleSheet.create({
     margin: 5,
     borderWidth: 1,
     borderRadius: 10,
-    borderColor: colors.secondary400Color,
-    backgroundColor: colors.lightBackgroundColor,
-    shadowColor: colors.darkColor,
+    borderColor: colors.secondary20,
+    backgroundColor: colors.light,
+    shadowColor: colors.dark,
     shadowOffset: {width: 0, height: 0},
     shadowOpacity: 0.4,
     shadowRadius: 5,
@@ -49,7 +49,7 @@ export const styles = StyleSheet.create({
   },
   antDetailText: {
     fontWeight: 'bold',
-    color: colors.secondary400Color,
+    color: colors.secondary20,
     font: 13,
   },
   antStatusText: {
