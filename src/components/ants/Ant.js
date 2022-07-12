@@ -6,7 +6,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import {View, Text, ActivityIndicator} from 'react-native';
+import {View, Text} from 'react-native';
+import {AntStatus, ANT_PARAMETERS} from './AntStatus';
 import {styles} from './_ant';
 
 export function Ant({
@@ -39,74 +40,22 @@ export function Ant({
           </Text>
         )}
 
-        <AntDetails length={length} color={color} weight={weight} />
+        <View style={styles.detailsContainer}>
+          <Text style={styles.antDetailText}>Length: {length} | </Text>
+          <Text style={styles.antDetailText}>Color: {color} | </Text>
+          <Text style={styles.antDetailText}>Weight: {weight}</Text>
+        </View>
       </View>
     </View>
   );
 }
-export const ANT_PROPERTIES = {
+
+const ANT_PROPERTIES = {
   name: PropTypes.string.isRequired,
-  ...ANT_PARAMETERS,
-  ...ANT_DETAILS,
-};
-
-Ant.propTypes = ANT_PROPERTIES;
-
-const STATUS = {
-  NOT_STARTED: 'Not Yet Run',
-  IN_PROGRESS: 'In Progress',
-  CALCULATED: 'Calculated!',
-};
-
-function AntStatus({isStarted, isFinished, index, likelihood}) {
-  const antStatus = getAntStatus(likelihood, isStarted);
-  return (
-    <View style={styles.antPositionContainer}>
-      {isStarted && isFinished && (
-        <Text style={[styles.antText, styles.antPosition]}> {index + 1} </Text>
-      )}
-
-      {antStatus === STATUS.IN_PROGRESS && <ActivityIndicator size="small" />}
-
-      <Text
-        style={[
-          styles.antStatusText,
-          antStatus === STATUS.CALCULATED && styles.antFinishedText,
-        ]}>
-        {antStatus}
-      </Text>
-    </View>
-  );
-}
-
-const ANT_PARAMETERS = {
-  index: PropTypes.number.isRequired,
-  likelihood: PropTypes.number,
-  isStarted: PropTypes.bool.isRequired,
-  isFinished: PropTypes.bool.isRequired,
-};
-AntStatus.propTypes = ANT_PARAMETERS;
-
-function AntDetails({length, color, weight}) {
-  return (
-    <View style={styles.detailsContainer}>
-      <Text style={styles.antDetailText}>Length: {length} | </Text>
-      <Text style={styles.antDetailText}>Color: {color} | </Text>
-      <Text style={styles.antDetailText}>Weight: {weight}</Text>
-    </View>
-  );
-}
-
-const ANT_DETAILS = {
   length: PropTypes.number.isRequired,
   color: PropTypes.string.isRequired,
   weight: PropTypes.number.isRequired,
+  ...ANT_PARAMETERS,
 };
-AntDetails.propTypes = ANT_DETAILS;
 
-function getAntStatus(likelihood, isStarted) {
-  if (!isStarted) {
-    return STATUS.NOT_STARTED;
-  }
-  return likelihood !== undefined ? STATUS.CALCULATED : STATUS.IN_PROGRESS;
-}
+Ant.propTypes = ANT_PROPERTIES;

@@ -10,11 +10,11 @@ import {View, Text} from 'react-native';
 import {GenericButton} from '../common/GenericButton';
 import {AntsList} from '../ants/AntsList';
 import {styles} from './_raceDashboard';
-import {isRaceFinished} from '../../utils/raceStatus';
+import {raceIsFinished} from '../../utils/raceStatus';
 
 export function RaceDashboard({ants = [], onRaceStart}) {
   const [isStarted, setIsStarted] = useState(false);
-  const isFinished = isRaceFinished(ants);
+  const isFinished = raceIsFinished(ants);
 
   const handleStart = () => {
     setIsStarted(true);

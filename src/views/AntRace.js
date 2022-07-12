@@ -24,11 +24,11 @@ const GET_ANTS = gql`
 `;
 export function AntRace() {
   const [ants, setAnts] = useState([]);
-  const [getAnts, {loading, data}] = useLazyQuery(GET_ANTS, {
+  const [getAnts, {loading}] = useLazyQuery(GET_ANTS, {
     onError() {
       Alert.alert('An error occurred. Please try again later');
     },
-    onCompleted() {
+    onCompleted: data => {
       if (data.ants) {
         setAnts(data.ants);
       } else {
@@ -40,15 +40,15 @@ export function AntRace() {
   const startRace = () => {
     ants.forEach(ant => {
       function getLikelihood(likelihood) {
-        setAnts(oldAnts =>
-          oldAnts
-            .map(oldAnt =>
-              oldAnt.name === ant.name
+        setAnts(previousAnts =>
+          previousAnts
+            .map(previousAnt =>
+              previousAnt.name === ant.name
                 ? {
-                    ...oldAnt,
+                    ...previousAnt,
                     likelihood: likelihood,
                   }
-                : oldAnt,
+                : previousAnt,
             )
             .sort((antA, antB) => antB.likelihood - antA.likelihood),
         );
