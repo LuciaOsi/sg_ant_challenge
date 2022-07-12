@@ -3,47 +3,15 @@
  * @description renders 3 ants with its index. They autoscroll horizontally
  */
 import React, {useCallback, useRef} from 'react';
-import {View, FlatList, Image, Text} from 'react-native';
+import {View, Image, Text} from 'react-native';
 import {styles} from './_antAnimation';
+import Carousel from 'react-native-snap-carousel';
 
 export function AntAnimation() {
-  const flatListRef = useRef(null);
-
-  const onAntChange = useCallback(({viewableItems}) => {
-    if (flatListRef.current) {
-      if (viewableItems[0].index === 2) {
-        setTimeout(function () {
-          if (flatListRef.current) {
-            flatListRef.current.scrollToIndex({
-              animated: true,
-              index: 0,
-              viewPosition: 0,
-            });
-          }
-        }, 2000);
-      } else {
-        setTimeout(function () {
-          if (flatListRef.current) {
-            flatListRef.current.scrollToIndex({
-              animated: true,
-              index: viewableItems[0].index + 1,
-              viewPosition: viewableItems[0].index + 1,
-            });
-          }
-        }, 2000);
-      }
-    }
-  }, []);
   return (
-    <FlatList
+    <Carousel
+      loop={true}
       data={['1', '2', '3']}
-      horizontal
-      snapToInterval={390}
-      snapToAlignment={'center'}
-      onViewableItemsChanged={onAntChange}
-      ref={flatListRef}
-      scrollEnabled={false}
-      showsVerticalScrollIndicator={false}
       renderItem={({item}) => (
         <View id={item} style={styles.container}>
           <Text>{item}</Text>
@@ -54,6 +22,11 @@ export function AntAnimation() {
           />
         </View>
       )}
+      sliderWidth={390}
+      itemWidth={390}
+      autoplay={true}
+      autoplayDelay={500}
+      autoplayInterval={2000}
     />
   );
 }
