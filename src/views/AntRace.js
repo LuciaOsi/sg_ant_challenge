@@ -3,8 +3,8 @@
  * @description renders the GetAntsButton component if the ants information is not loaded,
  * otherwise if renders the RaceDashboard component in order show the list of ants.
  */
-import React, {useState, useCallback, useRef, useEffect} from 'react';
-import {View, Alert, FlatList, Image, Dimensions, Text, Animated} from 'react-native';
+import React, {useState} from 'react';
+import {View, Alert} from 'react-native';
 import {RaceDashboard} from './../components/race/RaceDashboard';
 import {GetAntsButton} from '../components/ants/GetAntsButton';
 import {AntAnimation} from '../components/ants/AntAnimation';
@@ -25,9 +25,6 @@ const GET_ANTS = gql`
 `;
 export function AntRace() {
   const [ants, setAnts] = useState([]);
-  // const { width } = Dimensions.get('window');
-  const [activeAnt, setActiveAnt] = useState(0);
-  const flatListRef = useRef(null);
   const [getAnts, {loading}] = useLazyQuery(GET_ANTS, {
     onError() {
       Alert.alert('An error occurred. Please try again later');

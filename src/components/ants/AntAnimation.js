@@ -1,6 +1,6 @@
 /**
  * @module AntAnimation
- * @description
+ * @description renders 3 ants with its index. They autoscroll horizontally
  */
 import React, {useCallback, useRef} from 'react';
 import {View, FlatList, Image, Text} from 'react-native';
@@ -19,16 +19,17 @@ export function AntAnimation() {
               index: 0,
               viewPosition: 0,
             });
-      }}, 2000);
+          }
+        }, 2000);
       } else {
         setTimeout(function () {
           if (flatListRef.current) {
             flatListRef.current.scrollToIndex({
               animated: true,
-            index: viewableItems[0].index + 1,
-            viewPosition: viewableItems[0].index + 1,
+              index: viewableItems[0].index + 1,
+              viewPosition: viewableItems[0].index + 1,
             });
-        }  
+          }
         }, 2000);
       }
     }
