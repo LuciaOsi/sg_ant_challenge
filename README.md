@@ -46,7 +46,7 @@ Open the terminal and go to the directory where you want the project to be.
 
 Clone the files from the repository
 
-> git clone 
+> git clone https://github.com/LuciaOsi/sg_ant_challenge.git
 
 Access to the newly created folder
 
